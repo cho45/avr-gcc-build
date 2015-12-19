@@ -36,6 +36,8 @@ function build_binutils() {
 	fi
 
 	cd $binutils
+	echo "applying avr-size patch"
+	patch -p0 -u < $ROOT/30-binutils-2.20.1-avr-size.patch
 
 	rm -rf obj-avr
 	mkdir obj-avr
