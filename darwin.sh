@@ -11,6 +11,7 @@ NUMCPU=`sysctl -n hw.ncpu`
 
 SUFFIX=`date +"%Y%m%d"`
 ROOT=`pwd`
+SH_ROOT=`dirname $0`
 
 export PREFIX="$HOME/sdk/avr-$SUFFIX"
 export PATH="$PREFIX/bin:$PATH"
@@ -37,7 +38,7 @@ function build_binutils() {
 
 	cd $binutils
 	echo "applying avr-size patch"
-	patch -p0 -u < $ROOT/30-binutils-2.20.1-avr-size.patch
+	patch -p0 -u < $SH_ROOT/30-binutils-2.20.1-avr-size.patch
 
 	rm -rf obj-avr
 	mkdir obj-avr
